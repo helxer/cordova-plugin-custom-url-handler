@@ -1,0 +1,55 @@
+<plugin id="cordova-plugin-custom-url-handler" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>CustomURLHandler</name>
+
+    <description>
+        Open your app using a custom URL: myapp://
+        Additionally, you can specify a path and pass parameters, for example: myapp://somepath?foo=bar
+    </description>
+
+    <author>Max Rudchuk</author>
+
+    <license>MIT</license>
+
+    <keywords>Custom URL Scheme, URLscheme, URL scheme, Custom URL, Launch My App, Launch App</keywords>
+
+    <repo>https://github.com/helxer/cordova-plugin-custom-url-handler.git</repo>
+
+    <issue>https://github.com/helxer/cordova-plugin-custom-url-handler/issues</issue>
+
+    <preference name="URL_SCHEME" />
+
+    <platform name="ios">
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>$URL_SCHEME</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+        <source-file src="ios/AppDelegateCustomURL.m" />
+        <hook type="after_prepare" src="scripts/patch_app_delegate.js" />
+    </platform>
+
+    <platform name="android">
+        <js-module src="android/CustomUrlHandler.js" name="CustomUrlHandler">
+            <clobbers target="window.plugins.customurlhandler" />
+        </js-module>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="$URL_SCHEME" />
+            </intent-filter>
+        </config-file>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CustomUrlHandler">
+                <param name="android-package" value="ua.helxer.plugins.CustomUrlHandler" />
+            </feature>
+        </config-file>
+        <source-file src="android/CustomUrlHandler.java" target-dir="src/ua/helxer/plugins" />
+    </platform>
+</plugin>

@@ -1,0 +1,32 @@
+{
+  "name": "cordova-plugin-custom-url-handler",
+  "version": "1.0.0",
+  "description": "Open your app using a custom URL, such as `myapp://`. You can also include a path and pass parameters like this: `myapp://somepath?foo=bar`.",
+  "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helxer/cordova-plugin-custom-url-handler.git"
+  },
+  "keywords": [
+    "Custom URL Scheme",
+    "URLscheme",
+    "URL scheme",
+    "Custom URL",
+    "Launch My App",
+    "Launch App",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "Max Rudchuk (https://github.com/helxer)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helxer/cordova-plugin-custom-url-handler/issues"
+  },
+  "homepage": "https://github.com/helxer/cordova-plugin-custom-url-handler#readme"
+}
