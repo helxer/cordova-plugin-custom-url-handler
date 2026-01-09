@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-custom-url-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open your app using a custom URL, such as `myapp://`. You can also include a path and pass parameters like this: `myapp://somepath?foo=bar`.",
   "cordova": {
     "platforms": [
